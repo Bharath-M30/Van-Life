@@ -14,7 +14,7 @@ export default function Vans() {
 
     return (
         <div className="flex-1 p-8">
-            <section className="min-[510px]:p-8 p-2">
+            <section className="min-[510px]:p-0">
                 <h2 className="text-[#161616] font-[700] text-[2rem]">Explore our Van options</h2>
                 <div className="flex justify-between mt-4">
                     <button className="filter-btn">Simple</button>
@@ -25,7 +25,7 @@ export default function Vans() {
             </section>
 
             {
-                vans.length != 0 ? <section className="grid grid-cols-1 gap-16 min-[510px]:grid-cols-2 min-[510px]:gap-x-4 min-[510px]:gap-y-8 py-8 px-4 place-content-center place-items-center h-full">
+                vans.length != 0 ? <section className="grid grid-cols-1 min-[510px]:grid-cols-2 gap-x-16 gap-y-16 py-8 px-4 place-content-center place-items-center h-full">
                             {vans.map(van => (
                                 <Link to={`/vans/${van.id}`} key={van.id}>
                                     <Van 

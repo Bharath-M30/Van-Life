@@ -30,7 +30,7 @@ export default function VanDetail() {
             <Link to="/vans"><BackButton /> Back to vans page</Link>
             { van ? (
                 <div className='my-8'>
-                    <img src={van.imageUrl} alt={van.name} className='size-full rounded'/>
+                    <img src={van.imageUrl} alt={van.name} className='size-[32rem] rounded object-cover'/>
                     <span className={`inline-block px-4 py-2 mb-4 ${typeColor} rounded-md text-center text-white mt-4`}>{van.type}</span>
 
                     <h3 className="font-[700] text-3xl mb-4">{van.name}</h3>
