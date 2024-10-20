@@ -13,8 +13,8 @@ export default function Vans() {
     }, [])
 
     return (
-        <div className="flex-1">
-            <section className="p-8">
+        <div className="flex-1 p-8">
+            <section className="min-[510px]:p-8 p-2">
                 <h2 className="text-[#161616] font-[700] text-[2rem]">Explore our Van options</h2>
                 <div className="flex justify-between mt-4">
                     <button className="filter-btn">Simple</button>
