@@ -14,7 +14,7 @@ export default {
       backgroundImage: {
         "hero-image": "url('/background.png')"
       }
-    },
+    }
   },
   plugins: [],
 }

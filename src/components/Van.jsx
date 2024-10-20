@@ -11,8 +11,8 @@ export default function Van({name,price,type,imageUrl}) {
     }
 
     return (
-        <div className="flex flex-col w-[14.3125rem] rounded">
-            <img src={imageUrl} alt={name} className="size-[14.3125rem] rounded object-cover object-center"/>
+        <div className="flex flex-col w-full min-[510px]:w-[14.3125rem] rounded">
+            <img src={imageUrl} alt={name} className="size-[26rem] min-[510px]:size-[14.3125rem] rounded object-cover"/>
             <div className="flex justify-between mt-4">
                 <div>
                     <h3 className="font-[600] text-xl">{name}</h3>
