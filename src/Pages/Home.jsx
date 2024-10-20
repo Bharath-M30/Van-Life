@@ -1,7 +1,7 @@
 export default function Home() {
     return (
             <main 
-                className="h-full hero-background bg-no-repeat bg-cover p-4 flex flex-col gap-4 items-center justify-center">
+                className="flex-1 hero-background bg-no-repeat bg-cover p-4 flex flex-col gap-4 items-center justify-center">
 
                 <h2 
                     className="text-white text-4xl font-extrabold">
