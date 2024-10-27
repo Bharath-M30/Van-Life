@@ -1,27 +1,32 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import NavBar from "./Pages/NavBar"
-import Footer from "./Pages/Footer"
-import Home from "./Pages/Home"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Layout from "./components/Layout"
 import About from "./Pages/About"
-import Vans from "./Pages/Vans"
-import VanDetail from "./Pages/VanDetail"
+import Home from "./Pages/Home"
+import VanDetail from "./Pages/Vans/VanDetail"
+import Vans from "./Pages/Vans/Vans"
+import Dashboard from "./Pages/Host/Dashboard"
+import Income from "./Pages/Host/Income"
+import Reviews from "./Pages/Host/Reviews"
+
 import "./server"
 
 export default function App() {
   return (
-    <>
+
       <BrowserRouter>
       <div className="min-h-screen flex flex-col">
-          <NavBar />
           <Routes>
+            <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/vans" element={<Vans />} />
               <Route path="/vans/:id" element={<VanDetail />} />
+              <Route path="/host" element={<Dashboard />} />
+              <Route path="/host/income" element={<Income />} />
+              <Route path="/host/reviews" element={<Reviews />} />
+            </Route>
           </Routes>
-          <Footer />
       </div>
       </BrowserRouter>
-    </>
   )
 }

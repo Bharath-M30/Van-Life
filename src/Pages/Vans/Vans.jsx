@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import Van from "../components/Van"
-import {useState, useEffect} from "react"
+import Van from "../../components/Van"
 
 export default function Vans() {
 
