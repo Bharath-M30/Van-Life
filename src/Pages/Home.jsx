@@ -1,7 +1,7 @@
 export default function Home() {
     return (
             <main 
-                className="flex-1 hero-background bg-no-repeat bg-cover p-4 flex flex-col gap-4 items-center justify-center">
+                className="flex-1 hero-background bg-no-repeat bg-cover p-4 flex flex-col gap-8 items-center justify-center">
 
                 <h2 
                     className="text-white text-4xl font-extrabold">
@@ -14,7 +14,7 @@ export default function Home() {
                 </p>
 
                 <button 
-                    className="w-full py-4 text-center bg-[#FF8C38] text-white rounded-md">
+                    className="w-full py-4 text-lg font-[700] text-center bg-[#FF8C38] text-white rounded-md">
                         Explore Vans
                 </button>
             </main>

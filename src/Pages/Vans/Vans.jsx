@@ -25,7 +25,8 @@ export default function Vans() {
             </section>
 
             {
-                vans.length != 0 ? <section className="grid grid-cols-1 min-[510px]:grid-cols-2 gap-x-16 gap-y-16 py-8 px-4 place-content-center place-items-center h-full">
+                vans.length != 0 ? 
+                        <section className="grid grid-cols-1 min-[510px]:grid-cols-2 gap-x-16 gap-y-16 py-8 px-4 place-content-center place-items-center h-full">
                             {vans.map(van => (
                                 <Link to={`/vans/${van.id}`} key={van.id}>
                                     <Van 
