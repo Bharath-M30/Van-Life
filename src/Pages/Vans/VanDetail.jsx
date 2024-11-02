@@ -27,7 +27,7 @@ export default function VanDetail() {
 
     return (
         <div className='flex-1 p-8'>
-            <Link to="/vans"><BackButton /> Back to vans page</Link>
+            <Link to=".." relative='path'><BackButton /> Back to vans page</Link>
             { van ? (
                 <div className='my-8'>
                     <img src={van.imageUrl} alt={van.name} className='size-[32rem] rounded object-cover'/>
@@ -42,7 +42,7 @@ export default function VanDetail() {
                         Rent this van
                     </button>
                 </div> )
-             : <p className='text-center my-32'>Loading...</p>
+             : <p className='text-center my-32'>In a sec...</p>
             }
         </div>
     )

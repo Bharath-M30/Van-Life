@@ -27,7 +27,7 @@ export default function HostVans() {
                         />
                     </Link>
                 ))) :
-                <p>Loading...</p>
+                <p className='text-center mt-32'>In a sec...</p>
             }
         </section>
     )

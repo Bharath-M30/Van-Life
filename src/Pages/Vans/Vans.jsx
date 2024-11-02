@@ -40,7 +40,7 @@ export default function Vans() {
                             ))}
                         </section>
                     :   
-                        <p className="text-center mt-32">Loading...</p>
+                        <p className="text-center mt-32">In a sec...</p>
             }
         </div>
     )
