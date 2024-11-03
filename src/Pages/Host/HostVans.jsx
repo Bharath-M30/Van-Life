@@ -1,16 +1,28 @@
 import HostVan from "../../components/HostVan"
 import { useEffect,useState } from "react"
 import { Link } from "react-router-dom"
+import { getHostVans } from "../../api"
 
 export default function HostVans() {
 
     const [hostVans,setHostVans] = useState(null)
+    const [error,setError] = useState(null)
 
     useEffect(() => {
-        fetch("/api/host/vans")
-        .then(res => res.json())
-        .then(data => setHostVans(data.vans));
+        async function loadVans() {
+            try{
+                const data = await getHostVans()
+                setHostVans(data)
+            }catch(err){
+                setError(err)
+            }
+        }
+        loadVans()
     }, [])
+
+    if(error){
+        return <h1 className="flex-1 mt-32 text-4xl font-extrabold">There was an error! {error.message}</h1>
+    }
 
     return (
         <section className="p-8 flex flex-col gap-8 mt-4 rounded-md">

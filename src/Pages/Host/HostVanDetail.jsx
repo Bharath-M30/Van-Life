@@ -1,17 +1,25 @@
 import BackButton from '@mui/icons-material/ArrowBackIosNewSharp';
 import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
 import { useState,useEffect } from 'react';
+import { getHostVans } from '../../api';
 
 export default function HostVanDetail() {
 
-    const params = useParams()
+    const {id} = useParams()
     const [van, setVan] = useState(null)
+    const [error,setError] = useState(null)
 
     useEffect(() => {
-        fetch(`/api/host/vans/${params.id}`)
-        .then(res => res.json())
-        .then(data => setVan(data.vans[0]))
-    }, [params.id])
+        async function loadVan(){
+            try{
+                const data = await getHostVans(id)
+                setVan(data)
+            }catch(err){
+                setError(err)
+            }
+        }
+        loadVan()
+    }, [id])
 
     const activeStyle = "text-[#151515] underline underline-offset-4";
 
@@ -25,6 +33,10 @@ export default function HostVanDetail() {
         }else if(van.type == "rugged"){
             typeColor = "bg-[#115E59]"
         }
+    }
+
+    if(error){
+        return <h1 className="flex-1 mt-32 text-4xl font-extrabold">There was an error! {error.message}</h1>
     }
 
     return (

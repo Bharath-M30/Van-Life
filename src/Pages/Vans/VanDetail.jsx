@@ -1,18 +1,26 @@
 import BackButton from '@mui/icons-material/ArrowBackIosNewSharp';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { useState,useEffect } from 'react';
+import { getVans } from '../../api';
 
 export default function VanDetail() {
 
-    const params = useParams()
+    const {id} = useParams()
     const location = useLocation()
     const [van, setVan] = useState(null)
+    const [error,setError] = useState(null)
 
     useEffect(() => {
-        fetch(`/api/vans/${params.id}`)
-        .then(res => res.json())
-        .then(data => setVan(data.vans))
-    }, [params.id])
+        async function loadVan() {
+            try{
+                const data = await getVans(id)
+                setVan(data)
+            } catch(err){
+                setError(err)
+            }
+        }
+        loadVan()
+    }, [id])
 
     let typeColor;
 
@@ -29,6 +37,9 @@ export default function VanDetail() {
     const search = location.state?.search || ""
     const type = location.state?.type || null
 
+    if(error) {
+        return <h1 className="flex-1 mt-32 text-4xl font-extrabold">There was an error! {error.message}</h1>
+    }
     return (
         <div className='flex-1 p-8'>
             <Link to={`..${search}`} relative='path'><BackButton /> Back to {type ? type : "all"} vans</Link>

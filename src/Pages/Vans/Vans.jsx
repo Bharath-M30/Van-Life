@@ -1,18 +1,26 @@
 import { useEffect, useState } from "react"
 import { Link, useSearchParams } from "react-router-dom"
 import Van from "../../components/Van"
+import { getVans } from "../../api"
 
 export default function Vans() {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const [vans, setVans] = useState([])
+    const [error, setError] = useState(null)
 
     const typeFilter = searchParams.get("type")
     
     useEffect(() => {
-        fetch("/api/vans")
-        .then(res => res.json())
-        .then(data => setVans(data.vans))
+        async function loadVans() {
+            try{
+                const data = await getVans()
+                setVans(data)
+            } catch(err){
+                setError(err)
+            }
+        }
+        loadVans()
     }, [])
 
     const displayedVans = typeFilter ? vans.filter(van => van.type.toLowerCase() == typeFilter) : vans
@@ -26,6 +34,10 @@ export default function Vans() {
             }
             return prevParams
         })
+    }
+
+    if(error){
+        return <h1 className="flex-1 mt-32 text-4xl font-extrabold">There was an error! {error.message}</h1>
     }
 
     return (
@@ -64,7 +76,7 @@ export default function Vans() {
             </section>
 
             {
-                vans.length != 0 ? 
+                vans.length > 0 ?
                         <section className="grid grid-cols-1 min-[510px]:grid-cols-2 gap-x-16 gap-y-16 py-8 px-4 place-content-center place-items-center h-full">
                             {displayedVans.map(van => (
                                 <Link to={`/vans/${van.id}`} key={van.id} state={{search: `?${searchParams.toString()}`,type: typeFilter}}>
@@ -78,8 +90,7 @@ export default function Vans() {
                                 </Link>
                             ))}
                         </section>
-                    :   
-                        <p className="text-center mt-32">In a sec...</p>
+                        : <p className="text-center mt-32">In a sec...</p>
             }
         </div>
     )
