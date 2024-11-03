@@ -1,16 +1,29 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { loginUser } from "../api"
 
 export default function Login(){
 
     const [loginFormData, setLoginFormData] = useState({email: "",password: ""})
+    const [status, setStatus] = useState("idle")
+    const [error, setError] = useState(null)
     const location = useLocation()
+    const navigate = useNavigate()
+
 
     function handleSubmit(e) {
         e.preventDefault()
+        setStatus("submitting")
         loginUser(loginFormData)
-        .then(data => console.log(data))
+        .then(data => {
+            setError(null)
+            sessionStorage.setItem("loggedin", true)
+            navigate(`${location.state?.path || "/host"}`, {replace: true})
+        })
+        .catch(err => setError(err))
+        .finally(() => {
+            setStatus("idle")
+        })
     }
     function handleChange(e){
         const {name,value} = e.target
@@ -24,9 +37,10 @@ export default function Login(){
 
     return (
         <>
-            {loginMessage && <h3 className="text-xl text-center text-red-600 absolute transform translate-x-44">{loginMessage}</h3>}
+            {loginMessage && <h3 className="text-xl font-semibold text-center text-red-600">{loginMessage}</h3>}
             <div className="flex-1 p-8 items-center mt-16">
                 <h1 className="text-3xl font-bold text-center mb-4">Sign in to your account</h1>
+                {error?.message && <h3 className="text-lg text-center text-red-600 mb-4">{error.message}</h3>}
                 <form onSubmit={handleSubmit} className="flex flex-col">
                     <input 
                         name="email"
@@ -45,9 +59,10 @@ export default function Login(){
                         value={loginFormData.password}
                     />
                     <button 
+                        disabled={status == "submitting"}
                         className="mt-4 w-full p-4 text-center text-white rounded-md bg-[#FF8C38]"
                     >
-                        Log in
+                        {status == "submitting" ? "Logging in..." : "Log in"}
                     </button>
                 </form>
                 <p className="text-center mt-4">Don't have an account? <Link className="text-[#FF8C38]">create one now</Link></p>
