@@ -13,8 +13,6 @@ export default function HostVanDetail() {
         .then(data => setVan(data.vans[0]))
     }, [params.id])
 
-    console.log(van)
-
     const activeStyle = "text-[#151515] underline underline-offset-4";
 
     let typeColor;

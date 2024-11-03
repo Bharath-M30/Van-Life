@@ -1,10 +1,11 @@
 import BackButton from '@mui/icons-material/ArrowBackIosNewSharp';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { useState,useEffect } from 'react';
 
 export default function VanDetail() {
 
     const params = useParams()
+    const location = useLocation()
     const [van, setVan] = useState(null)
 
     useEffect(() => {
@@ -25,12 +26,15 @@ export default function VanDetail() {
         }
     }
 
+    const search = location.state?.search || ""
+    const type = location.state?.type || null
+
     return (
         <div className='flex-1 p-8'>
-            <Link to=".." relative='path'><BackButton /> Back to vans page</Link>
+            <Link to={`..${search}`} relative='path'><BackButton /> Back to {type ? type : "all"} vans</Link>
             { van ? (
                 <div className='my-8'>
-                    <img src={van.imageUrl} alt={van.name} className='size-[32rem] rounded object-cover'/>
+                    <img src={van.imageUrl} alt={van.name} className='size-[25rem] min-[463px]:size-[36rem] rounded object-cover'/>
                     <span className={`inline-block px-4 py-2 mb-4 ${typeColor} rounded-md text-center text-white mt-4`}>{van.type}</span>
 
                     <h3 className="font-[700] text-3xl mb-4">{van.name}</h3>

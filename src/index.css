@@ -10,4 +10,14 @@
     .filter-btn{
         @apply bg-[#FFEAD0] text-[#4D4D4D] text-[0.8rem] px-2 py-1 min-[510px]:text-[1rem] min-[510px]:px-4 min-[510px]:py-2 rounded-md
     }
+
+    .filter-simple{
+        @apply hover:bg-[#E17654] hover:text-[#FFEAD0] transition duration-300
+    }
+    .filter-luxury{
+        @apply hover:bg-[#161616] hover:text-[#FFEAD0] transition duration-300
+    }
+    .filter-rugged{
+        @apply hover:bg-[#115E59] hover:text-[#FFEAD0] transition duration-300
+    }
 }
