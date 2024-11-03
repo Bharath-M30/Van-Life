@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Home() {
     return (
             <main 
@@ -13,10 +15,11 @@ export default function Home() {
                         Add adventure to your life by joining the #vanlife movement. Rent the perfect van to make your perfect road trip.
                 </p>
 
-                <button 
-                    className="w-full py-4 text-lg font-[700] text-center bg-[#FF8C38] text-white rounded-md">
+                <Link 
+                    to="/vans"
+                    className="w-full py-4 text-lg font-[700] text-center bg-[#FF8C38] text-white rounded-md hover:transform hover:translate-x-1 hover:translate-y-1 transition duration-500">
                         Explore Vans
-                </button>
+                </Link>
             </main>
     )
 }
