@@ -53,7 +53,7 @@ export default function Login(){
                         onChange={handleChange} 
                         type="email"
                         placeholder="Email address"
-                        className="w-full py-4 pl-4 border-2 mt-4 border-solid focus:outline-none"
+                        className="w-full py-4 pl-4 border-2 mt-4 rounded-md border-solid focus:outline-none"
                         value={loginFormData.email}
                     />
                     <input 
@@ -61,7 +61,7 @@ export default function Login(){
                         onChange={handleChange} 
                         type="password"
                         placeholder="Password"
-                        className="w-full py-4 pl-4 border-2 border-solid focus:outline-none"
+                        className="w-full py-4 pl-4 border-2 border-solid rounded-md focus:outline-none"
                         value={loginFormData.password}
                     />
                     <button 
