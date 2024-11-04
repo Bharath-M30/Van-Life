@@ -44,16 +44,16 @@ export default function Login(){
     return (
         <>
             {loginMessage && <h3 className="text-xl font-semibold text-center text-red-600">{loginMessage}</h3>}
-            <div className="flex-1 p-8 items-center mt-16">
+            <div className="flex flex-col items-center justify-center p-8">
                 <h1 className="text-3xl font-bold text-center mb-4">Sign in to your account</h1>
                 {error?.message && <h3 className="text-lg text-center text-red-600 mb-4">{error.message}</h3>}
-                <form onSubmit={handleSubmit} className="flex flex-col">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 min-w-80">
                     <input 
                         name="email"
                         onChange={handleChange} 
                         type="email"
                         placeholder="Email address"
-                        className="w-full py-4 pl-4 border-2 border-solid rounded-ss-lg rounded-se-lg focus:outline-none"
+                        className="w-full py-4 pl-4 border-2 border-solid focus:outline-none"
                         value={loginFormData.email}
                     />
                     <input 
@@ -61,7 +61,7 @@ export default function Login(){
                         onChange={handleChange} 
                         type="password"
                         placeholder="Password"
-                        className="w-full py-4 pl-4 border-2 border-solid rounded-es-lg rounded-ee-lg focus:outline-none"
+                        className="w-full py-4 pl-4 border-2 border-solid focus:outline-none"
                         value={loginFormData.password}
                     />
                     <button 
