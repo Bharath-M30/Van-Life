@@ -35,8 +35,8 @@ export default function Dashboard() {
                     <h3 className="font-bold text-2xl">Your listed vans</h3><Link to="vans">Details</Link>
                 </div>
                 <div className="flex flex-col mt-4 gap-6">
-                    { vans ? vans.map( van => (
-                        <div className="flex p-4 w-full bg-white justify-between items-center gap-4">
+                    { vans ? vans.map( (van,index) => (
+                        <div key={index} className="flex p-4 w-full bg-white justify-between items-center gap-4">
                             <div className="flex gap-4">
                                 <img src={van.imageUrl} alt="The_cruiser" className="size-16 rounded-md object-cover"/>
                                 <div>

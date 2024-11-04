@@ -1,7 +1,7 @@
 import BackButton from '@mui/icons-material/ArrowBackIosNewSharp';
 import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
 import { useState,useEffect } from 'react';
-import { getHostVans } from '../../api';
+import { getVan } from '../../api';
 
 export default function HostVanDetail() {
 
@@ -12,7 +12,7 @@ export default function HostVanDetail() {
     useEffect(() => {
         async function loadVan(){
             try{
-                const data = await getHostVans(id)
+                const data = await getVan(id)
                 setVan(data)
             }catch(err){
                 setError(err)

@@ -22,8 +22,8 @@ export default function Income() {
                     <p className="text-[#4D4D4D] font-[500]"> Last <span className="underline font-bold">30 days</span></p>
                 </div>
                 <div className="flex flex-col gap-6 mt-6">
-                    {transactionsData.map(transaction => (
-                        <div className="bg-white p-6 flex justify-between">
+                    {transactionsData.map((transaction,index) => (
+                        <div key={index} className="bg-white p-6 flex justify-between">
                             <strong className="text-3xl font-bold">${transaction.amount}</strong>
                             <p className="text-[#4D4D4D] font-[500]">{transaction.date}</p>
                         </div>

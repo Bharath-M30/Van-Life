@@ -42,7 +42,7 @@ export default function Reviews() {
                 <h2 className="text-xl font-bold">Reviews ({reviewsData.length})</h2>
 
                 {reviewsData.map(review => (
-                    <div className="my-6 flex flex-col gap-4">
+                    <div key={review.id} className="my-6 flex flex-col gap-4">
                         <div>{starRating(review.rating)}</div>
                         <p className="font-semibold">{review.name}<span className="text-[#8C8C8C] ml-2">{review.date}</span></p>
                         <p className="font-medium">{review.text}</p>

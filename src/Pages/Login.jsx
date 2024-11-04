@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { loginUser } from "../api"
 
 export default function Login(){
@@ -10,6 +10,12 @@ export default function Login(){
     const location = useLocation()
     const navigate = useNavigate()
 
+    useEffect(() => {
+        const isLoggedIn = sessionStorage.getItem("loggedin")
+        if(isLoggedIn){
+            navigate("/host")
+        }
+    },[])
 
     function handleSubmit(e) {
         e.preventDefault()
