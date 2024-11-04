@@ -25,7 +25,7 @@ export default function HostVans() {
     }
 
     return (
-        <section className="p-8 flex flex-col gap-8 mt-4 rounded-md">
+        <section className="p-6 flex flex-col gap-8 mt-4 rounded-md">
             <h2 className="font-[700] text-4xl">Your Listed Vans</h2>
             {
                 hostVans ? 
